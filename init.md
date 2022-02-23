@@ -24,9 +24,30 @@ homebrew Warning: /opt/homebrew/bin is not in your PATH.
 
 ### Set up ssh key
 
-Generate a key for SSH
-    ssh-keygen -t ed25519 -C "your_email@example.com"
-Add pub to git
+[Official Link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+1. Generate a key for SSH
+
+``` shell
+ssh-keygen -t ed25519 -C "your_email@example.com"
+Edit ~/.ssh/config
+```
+
+2. Edit ~/.ssh/config
+
+``` shell
+Host *
+      AddKeysToAgent yes
+      UseKeychain yes
+      IdentityFile ~/.ssh/id_ed25519
+```
+
+3. Add ssh key to ssh agent
+
+``` shell
+ssh-add -K ~/.ssh/id_ed25519
+```
+
+4. Add pub to git
 
 ## Node
-
